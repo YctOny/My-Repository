@@ -141,6 +141,7 @@ class DataCollection {
         houseHold = new BasicForm("OK", "Skip");
         houseHold.setTitle("Household");
         houseHold.addTextField("address","Address",20);
+        houseHold.setEditable("address",false);
         houseHold.addTextField("NumPeople", "# People",3);
     }//setUpHousehold
 
@@ -163,6 +164,7 @@ class DataCollection {
         individual = new BasicForm("OK");
         individual.setTitle("Individual");
         individual.addTextField("person","Person",3);
+        individual.setEditable("person",false);
         individual.addTextField("name","Name",10);
         individual.addTextField("age","Age",4);
         individual.addRadioButtons("sex","Sex",false,10,90,"Male","Female");
