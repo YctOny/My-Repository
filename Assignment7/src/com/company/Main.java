@@ -58,12 +58,13 @@ class DataCollection {
             output.newLine();
         }
 
-        input.close();
-        output.close();
+
         houseHold.close();
         individual.close();
+        input.close();
+        output.close();
 
-        System.exit(0);
+        //System.exit(0);
         // statements
 
     }
