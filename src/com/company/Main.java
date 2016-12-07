@@ -2,7 +2,7 @@ package com.company;
 
 import Media.*;
 import BasicIO.*;
-import sun.jvm.hotspot.code.PCDesc;
+//import sun.jvm.hotspot.code.PCDesc;
 
 import java.awt.*;
 import static BasicIO.Formats.*;
@@ -165,8 +165,8 @@ class PartB_1 {
         setUpReport("Daily Weather");
 
         for( ; ; ) {
-            if(file.isEOF()) break;
             processRollData();
+            if(file.isEOF()) break;
 
         }
 
@@ -201,7 +201,7 @@ class PartB_1 {
             total+=read;
         }
         average = (double)total/24;
-
+        if(file.isEOF()) return;
         writeDetail(date,day,max,min,average);
 
     }
@@ -213,7 +213,7 @@ class PartB_1 {
         printer.addField("day","Day",10);
         printer.addField("high","High",10);
         printer.addField("low","Low",10);
-        printer.addField("average","Average",10);
+        printer.addField("average","Average",getDecimalInstance(1),10);
 
     }
 
@@ -235,6 +235,7 @@ class PartB_2 {
         int length;
         int x=0;
         int y=0;
+
         setUpForm();
 
         for( ; ; ) {
@@ -263,8 +264,8 @@ class PartB_2 {
     }
 
     private void setUpForm() {
-        etch.setTitle("Etch-a-Sketch");
         etch = new BasicForm("Left","Up","Down","Right","Quit");
+        etch.setTitle("Etch-a-Sketch");
         etch.addCanvas("display",300,300,5,10);
         etch.addTextField("length","Line Length",10,4,350);
         yertle = new Turtle();
@@ -312,7 +313,7 @@ class PartB_3 {
         die1 = (int)(random()*6+1);
         die2 = (int)(random()*6+1);
         total = die1+die2;
-        System.out.println(total);
+        //System.out.println(total);
 
         display.writeInt("one",die1);
         display.writeInt("two",die2);
@@ -329,11 +330,11 @@ class PartB_3 {
     private void setUpForm() {
         display = new BasicForm("Roll","Cash Out");
         display.setTitle("Nine Or Above");
-        display.addTextField("one","Die One",8,4,8);
-        display.addTextField("two","Die Two",8,150,8);
-        display.addTextField("wager","Wager",getCurrencyInstance(),15,4,28);
-        display.addTextField("outcome","Outcome",8,4,48);
-        display.addTextField("balance","Balance",getCurrencyInstance(),15,4,68);
+        display.addTextField("one","Die One",5,4,8);
+        display.addTextField("two","Die Two",5,150,8);
+        display.addTextField("wager","Wager",getCurrencyInstance(),5,4,38);
+        display.addTextField("outcome","Outcome",5,4,68);
+        display.addTextField("balance","Balance",getCurrencyInstance(),10,4,98);
         display.setEditable("one",false);
         display.setEditable("two",false);
         display.setEditable("outcome",false);
