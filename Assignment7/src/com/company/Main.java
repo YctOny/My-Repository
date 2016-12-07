@@ -50,7 +50,7 @@ class DataCollection {
 
             writeTable(address,totalNum,maleNum,femaleNum,engSpker,frenSpker,otherSpker);
         }
-        
+
         houseHold.close();
         individual.close();
         input.close();
