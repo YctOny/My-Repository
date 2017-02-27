@@ -12,12 +12,12 @@ import static java.awt.Color.*;
 public class Main {
 
     public static void main(String[] args) {
-        //PartA_1 a1 = new PartA_1();
+        PartA_1 a1 = new PartA_1();
         //PartA_2 a2 = new PartA_2();
         //PartA_3 a3 = new PartA_3();
         //PartB_1 b1 = new PartB_1();
         //PartB_2 b2 = new PartB_2();
-        PartB_3 b3 = new PartB_3();
+        //PartB_3 b3 = new PartB_3();
     }
 
 }
@@ -41,7 +41,7 @@ class PartA_1 {
 
         makeBands(pic1,pic2);
         display.close();
-
+        //pic2.save();
     }
 
     private void makeBands(Picture pic1,Picture pic2) {
@@ -49,7 +49,7 @@ class PartA_1 {
         int height = pic1.getHeight();
         int temp = pic1.getHeight()/10;
         int count = 0;
-
+        /*
         for(int i=0;i<height;i++) {
             count++;
             for (int j = 0; j < width; j++) {
@@ -60,6 +60,18 @@ class PartA_1 {
                 count = 0;
             }
 
+        }
+        */
+
+        for(int i=0;i<height;i++) {
+            for(int j=0;j<width;j++) {
+                pic2.getPixel(j,i).setColor(pic1.getPixel(j,i).getColor());
+            }
+            if(count==temp) {
+                count=0;
+                i+=30;
+            }
+            count++;
         }
 
     }
@@ -83,7 +95,6 @@ class PartA_2 {
         Picture flip = flip(crop);
         paste(pic,flip,125,170);
         display.close();
-
 
     }
 
@@ -116,6 +127,9 @@ class PartA_2 {
             for(int j=x;j<x+width;j++)
                 orig.getPixel(j,i).setColor(paste.next().getColor());
     }
+
+
+
 }
 
 class PartA_3 {
@@ -152,6 +166,7 @@ class PartA_3 {
         }
         return mask;
     }
+
 }
 
 class PartB_1 {
@@ -174,7 +189,7 @@ class PartB_1 {
         printer.close();
 
     }
-
+    
     private void processRollData() {
         String date;
         String day;
@@ -201,10 +216,13 @@ class PartB_1 {
             total+=read;
         }
         average = (double)total/24;
-        if(file.isEOF()) return;
-        writeDetail(date,day,max,min,average);
+
+        if(!file.isEOF())
+            writeDetail(date,day,max,min,average);
 
     }
+
+
 
     private void setUpReport(String title) {
         printer.setTitle(title);
